@@ -45,7 +45,7 @@ spec:
         - name: MINIO_URL
           value: 10.109.95.227:9000
         - name: PORT
-          value: {{ .Values.services.apps.port }}
+          value: {{ .Values.services.apps.port | quote }}
         - name: REDIS_PASSWORD
           value: "budibase"
         - name: REDIS_URL
