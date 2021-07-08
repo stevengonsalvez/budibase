@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: proxy-service
+  name: proxy-service
+spec:
+  replicas: {{ .Values.services.proxy.replicaCount }}
+  selector:
+    matchLabels:
+      io.kompose.service: proxy-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: proxy-service
+    spec:
+      containers:
+      - image: envoyproxy/envoy:v1.16-latest
+        imagePullPolicy: ""
+        name: proxy-service
+        ports:
+        - containerPort: {{ .Values.services.proxy.port }}
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/envoy
+          name: proxy-service-volume
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: proxy-service-volume
+        hostPath:
+          path: /home/k8s/envoy
+status: {}
