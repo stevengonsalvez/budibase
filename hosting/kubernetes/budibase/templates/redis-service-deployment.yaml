@@ -27,7 +27,9 @@ spec:
     spec:
       containers:
       - args:
-        - redis-server --requirepass {{ .Values.services.redis.password }}
+        - redis-server 
+        - --requirepass 
+        - {{ .Values.services.redis.password }}
         image: redis
         imagePullPolicy: ""
         name: redis-service
