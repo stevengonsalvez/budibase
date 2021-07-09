@@ -47,7 +47,7 @@ spec:
             - "{{ .Values.services.couchdb.user }}:{{ .Values.services.couchdb.password}}"
             - -X 
             - PUT 
-            - "{{ .Values.services.couchdb.host }}:5985/_replicator"
+            - "{{ .Values.services.couchdb.host }}:5984/_replicator"
           initialDelaySeconds: 5
           periodSeconds: 5
         name: couchdb-service
