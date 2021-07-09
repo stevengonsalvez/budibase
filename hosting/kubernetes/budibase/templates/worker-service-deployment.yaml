@@ -40,17 +40,17 @@ spec:
         - name: JWT_SECRET
           value: {{ .Values.globals.jwt_secret | quote }}
         - name: MINIO_ACCESS_KEY
-          value: "budibase"
+          value: {{ .Values.services.object_store.access_key }}
         - name: MINIO_SECRET_KEY
-          value: "budibase"
+          value: {{ .Values.services.object_store.secret_key }}
         - name: MINIO_URL
-          value: 10.109.95.227:9000
+          value: {{ .Values.services.object_store.url }}
         - name: PORT
           value: {{ .Values.services.worker.port | quote }}
         - name: REDIS_PASSWORD
           value: {{ .Values.services.redis.password | quote }}
         - name: REDIS_URL
-          value: {{ .Values.services.redis.url | quote }}
+          value: "{{ .Values.services.redis.host }}:{{ .Values.services.redis.port }}"
         - name: SELF_HOSTED
           value: {{ .Values.globals.self_hosted | quote }}
         image: budibase/worker

@@ -89,7 +89,6 @@ globals:
   jwt_secret: budibase
   log_level: info
   self_hosted: 1
-  couchdb_url: foo
 
 services:
   proxy:
@@ -118,14 +117,15 @@ services:
     enabled: true
     replicaCount: 1
     host: localhost
-    password: budibase
     port: 6379
+    password: budibase
     storage: 100Mi
   
   object_store:
     minio: true
     replicaCount: 1
-    port: 9000
+    url: localhost:9000
     access_key: budibase
     secret_key: budibase
+    storage: 100Mi
 

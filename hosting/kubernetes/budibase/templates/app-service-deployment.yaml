@@ -29,7 +29,7 @@ spec:
         - name: BUDIBASE_ENVIRONMENT
           value: {{ .Values.globals.budibase_env }}
         - name: COUCH_DB_URL
-          value: 10.96.145.235:5984
+          value: "{{ .Values.services.couchdb.host }}:{{ .Values.services.couchdb.port }}"
         - name: ENABLE_ANALYTICS
           value: {{ .Values.globals.enable_analytics }}
         - name: INTERNAL_API_KEY
@@ -39,24 +39,24 @@ spec:
         - name: LOG_LEVEL
           value: {{ .Values.services.apps.log_level | default "info" | quote }}
         - name: MINIO_ACCESS_KEY
-          value: "budibase"
+          value: {{ .Values.services.object_store.access_key }}
         - name: MINIO_SECRET_KEY
-          value: "budibase"
+          value: {{ .Values.services.object_store.secret_key }}
         - name: MINIO_URL
-          value: 10.109.95.227:9000
+          value: {{ .Values.services.object_store.url }}
         - name: PORT
           value: {{ .Values.services.apps.port | quote }}
         - name: REDIS_PASSWORD
-          value: "budibase"
+          value: {{ .Values.services.redis.password }}
         - name: REDIS_URL
-          value: 10.104.121.14:6379
+          value: "{{ .Values.services.redis.host }}:{{ .Values.services.redis.port }}"
         - name: SELF_HOSTED
           value: {{ .Values.globals.self_hosted | default "1" | quote }}
         - name: SENTRY_DSN
           value: {{ .Values.globals.sentry_dsn }}
         - name: WORKER_URL
-          value: 10.101.122.74:4003
-        image: budibase/apps:develop
+          value: "{{ .Values.services.worker.host }}:{{ .Values.services.worker.port }}"
+        image: budibase/apps
         imagePullPolicy: ""
         name: bbapps
         ports:
