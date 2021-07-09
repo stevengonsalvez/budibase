@@ -110,6 +110,8 @@ services:
   couchdb:
     port: 4001
     replicaCount: 1
+    user: budibase
+    password: budibase
     host: localhost
     port: 5678
     storage: 100Mi
