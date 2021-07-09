@@ -10,5 +10,5 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.service.worker.storage }} 
+      storage: {{ .Values.services.worker.storage }} 
 status: {}
