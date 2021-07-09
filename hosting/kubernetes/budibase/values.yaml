@@ -112,6 +112,7 @@ services:
     replicaCount: 1
     host: localhost
     port: 5678
+    storage: 100Mi
   
   redis:
     enabled: true

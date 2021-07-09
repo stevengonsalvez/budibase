@@ -10,9 +10,9 @@ metadata:
   name: couchdb-service
 spec:
   ports:
-  - name: "5984"
-    port: 5984
-    targetPort: 5984
+  - name: {{ .Values.services.couchdb.port | quote }}
+    port: {{ .Values.services.couchdb.port }}
+    targetPort: {{ .Values.services.couchdb.port }}
   selector:
     io.kompose.service: couchdb-service
 status:

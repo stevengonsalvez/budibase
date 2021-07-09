@@ -30,6 +30,24 @@ spec:
         - name: COUCHDB_USER
         image: ibmcom/couchdb3
         imagePullPolicy: ""
+        startupProbe:
+          exec:
+            command:
+            - curl 
+            - -u 
+            - : 
+            - -X 
+            - PUT 
+            - couchdb-service:5984/_users 
+            - '&&'
+            - curl 
+            - -u
+            - : 
+            - -X 
+            - PUT 
+            - "{{ .Values.services.couchdb.host }}:5985/_replicator"
+          initialDelaySeconds: 5
+          periodSeconds: 5
         name: couchdb-service
         ports:
         - containerPort: 5984
