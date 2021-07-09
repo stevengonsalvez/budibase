@@ -118,6 +118,7 @@ services:
     enabled: true
     replicaCount: 1
     host: localhost
+    password: budibase
     port: 6379
     storage: 100Mi
   
