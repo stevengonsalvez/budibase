@@ -37,14 +37,14 @@ spec:
             command:
             - curl 
             - -u 
-            - ':'
+            - "{{ .Values.services.couchdb.user }}:{{ .Values.services.couchdb.password}}"
             - -X 
             - PUT 
-            - couchdb-service:5984/_users 
+            - "{{ .Values.services.couchdb.host }}:5984/_users"
             - '&&'
             - curl 
             - -u
-            - ':'
+            - "{{ .Values.services.couchdb.user }}:{{ .Values.services.couchdb.password}}"
             - -X 
             - PUT 
             - "{{ .Values.services.couchdb.host }}:5985/_replicator"
