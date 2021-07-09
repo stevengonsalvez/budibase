@@ -119,6 +119,7 @@ services:
     replicaCount: 1
     host: localhost
     port: 6379
+    storage: 100Mi
   
   object_store:
     minio: true
