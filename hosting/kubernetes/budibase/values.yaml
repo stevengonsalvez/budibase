@@ -123,6 +123,7 @@ services:
   
   object_store:
     minio: true
+    browser: true
     port: 9000
     replicaCount: 1
     url: localhost:9000

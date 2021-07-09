@@ -33,7 +33,7 @@ spec:
         - name: MINIO_ACCESS_KEY
           value: {{ .Values.services.object_store.access_key }}
         - name: MINIO_BROWSER
-          value: off
+          value: {{ .Values.services.object_store.browser | quote }}
         - name: MINIO_SECRET_KEY
           value: {{ .Values.services.object_store.secret_key }}
         image: minio/minio
