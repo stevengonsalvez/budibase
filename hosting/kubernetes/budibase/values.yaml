@@ -106,6 +106,7 @@ services:
   worker:
     port: 4001
     replicaCount: 1
+    storage: 100Mi
 
   couchdb:
     port: 4001
