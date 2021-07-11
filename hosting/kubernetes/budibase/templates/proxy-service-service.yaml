@@ -13,7 +13,7 @@ spec:
   ports:
   - port: {{ .Values.services.proxy.port }}
     targetPort: {{ .Values.services.proxy.port }}
-    nodePort: 30962
+    nodePort: {{ .Values.services.proxy.nodePort }}
   selector:
     io.kompose.service: proxy-service
 status:

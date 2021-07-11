@@ -27,21 +27,21 @@ spec:
       containers:
       - env:
         - name: BUDIBASE_ENVIRONMENT
-          value: {{ .Values.globals.budibase_env }}
+          value: {{ .Values.globals.budibaseEnv }}
         - name: COUCH_DB_URL
           value: "{{ .Values.services.couchdb.host }}:{{ .Values.services.couchdb.port }}"
         - name: ENABLE_ANALYTICS
-          value: {{ .Values.globals.enable_analytics }}
+          value: {{ .Values.globals.enableAnalytics }}
         - name: INTERNAL_API_KEY
-          value: {{ .Values.globals.internal_api_key }}
+          value: {{ .Values.globals.internalApiKey }}
         - name: JWT_SECRET
-          value: {{ .Values.globals.jwt_secret }}
+          value: {{ .Values.globals.jwtSecret }}
         - name: LOG_LEVEL
-          value: {{ .Values.services.apps.log_level | default "info" | quote }}
+          value: {{ .Values.services.apps.logLevel | default "info" | quote }}
         - name: MINIO_ACCESS_KEY
-          value: {{ .Values.services.object_store.access_key }}
+          value: {{ .Values.services.object_store.accessKey }}
         - name: MINIO_SECRET_KEY
-          value: {{ .Values.services.object_store.secret_key }}
+          value: {{ .Values.services.object_store.secretKey }}
         - name: MINIO_URL
           value: {{ .Values.services.object_store.url }}
         - name: PORT
@@ -53,7 +53,7 @@ spec:
         - name: SELF_HOSTED
           value: {{ .Values.globals.self_hosted | default "1" | quote }}
         - name: SENTRY_DSN
-          value: {{ .Values.globals.sentry_dsn }}
+          value: {{ .Values.globals.sentryDSN }}
         - name: WORKER_URL
           value: "{{ .Values.services.worker.host }}:{{ .Values.services.worker.port }}"
         image: budibase/apps
@@ -62,13 +62,6 @@ spec:
         ports:
         - containerPort: {{ .Values.services.apps.port }}
         resources: {}
-        volumeMounts:
-        - mountPath: /logs
-          name: app-service-claim0
       restartPolicy: Always
       serviceAccountName: ""
-      volumes:
-      - name: app-service-claim0
-        persistentVolumeClaim:
-          claimName: app-service-claim0
 status: {}

@@ -31,11 +31,11 @@ spec:
         - /data
         env:
         - name: MINIO_ACCESS_KEY
-          value: {{ .Values.services.object_store.access_key }}
+          value: {{ .Values.services.object_store.accessKey }}
         - name: MINIO_BROWSER
           value: {{ .Values.services.object_store.browser | quote }}
         - name: MINIO_SECRET_KEY
-          value: {{ .Values.services.object_store.secret_key }}
+          value: {{ .Values.services.object_store.secretKey }}
         image: minio/minio
         imagePullPolicy: ""
         livenessProbe:

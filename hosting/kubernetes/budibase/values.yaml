@@ -82,17 +82,18 @@ tolerations: []
 affinity: {}
 
 globals:
-  budibase_env: PRODUCTION
-  enable_analytics: foo
-  sentry_dsn: https://a34ae347621946bf8acded18e5b7d4b8@o420233.ingest.sentry.io/5338131
-  internal_api_key: budibase
-  jwt_secret: budibase
-  log_level: info
-  self_hosted: 1
+  budibaseEnv: PRODUCTION
+  enableAnalytics: foo
+  sentryDSN: https://a34ae347621946bf8acded18e5b7d4b8@o420233.ingest.sentry.io/5338131
+  internalApiKey: budibase
+  jwtSecret: budibase
+  logLevel: info
+  selfHosted: 1
 
 services:
   proxy:
     port: 10000
+    nodePort: 30962
     replicaCount: 1
     storage: 100Mi
 
@@ -100,7 +101,7 @@ services:
     port: 4002
     replicaCount: 1
     storage: 100Mi
-    log_level: info
+    logLevel: info
 
   worker:
     port: 4001
@@ -130,7 +131,7 @@ services:
     port: 9000
     replicaCount: 1
     url: localhost:9000
-    access_key: budibase
-    secret_key: budibase
+    accessKey: budibase
+    secretKey: budibase
     storage: 100Mi
 
