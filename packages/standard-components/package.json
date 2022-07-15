@@ -23,7 +23,7 @@
   ],
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.5",
-    "svelte": "^3.38.2",
+    "svelte": "^3.49.0",
     "vite": "^2.1.5"
   },
   "keywords": [
